@@ -5,6 +5,10 @@ const reducer = (state, action) => {
     case 'INCREMENT':
       return { ...state, count: state.count + 1 };
     case 'SET_TEXT':
+      if (!action.text) {
+        // bail out
+        return state;
+      }
       return { ...state, text: action.text };
     default:
       throw new Error('unknow action type');
